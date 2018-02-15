@@ -11,6 +11,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   	end
   	assert_template 'users/new'
   	assert_select 'div.alert', "The form contains 2 errors."
+  	assert_not is_logged_in?
+
   end
 
   test "invalid signup information or wrong flash" do
@@ -29,5 +31,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   	follow_redirect!
   	assert_template 'users/show'
   	assert_not flash[:success] != "Welcome to the Sample App"
+  	assert is_logged_in?
   end
 end
