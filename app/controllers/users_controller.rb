@@ -19,10 +19,6 @@ class UsersController < ApplicationController
   	end
   end
 
-  def login
-  	@user = User.find(1)
-  end
-
   private
     def user_params
       params.require(:user).permit(:name, :email, :password,
