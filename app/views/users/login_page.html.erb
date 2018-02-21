@@ -1,0 +1,17 @@
+<h1>Users#login</h1>
+<p>Find me in app/views/users/signup.html.erb</p>
+<%= form_for :login_info, url: login_path do |f| %>
+
+	<%= f.label :email %>
+	<%= f.email_field :email %>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+
+	<%= f.label :name, "remember me:" %>
+	<%= f.check_box("remember_me") %>
+
+	<%= f.submit "Create my account", class: "btn btn-primary" %>
+<% end %>
+
+

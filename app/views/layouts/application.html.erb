@@ -7,8 +7,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <%= render "layouts/header" %>
+    <% flash.each do |type, message| %>
+      <li><%= "#{type}: #{message}"%></li>
+    <% end %>
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>
