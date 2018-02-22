@@ -5,13 +5,17 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
   </head>
   <body>
     <%= render "layouts/header" %>
-    <% flash.each do |type, message| %>
-      <li><%= "#{type}: #{message}"%></li>
-    <% end %>
-    <%= yield %>
-    <%= render "layouts/footer" %>
+    <div class='container'>
+      <% flash.each do |type, message| %>
+        <li><%= "#{type}: #{message}"%></li>
+      <% end %>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
+
