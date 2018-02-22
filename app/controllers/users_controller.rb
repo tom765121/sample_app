@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 	def home
 	end
 
+	def show
+	end
+
 	def login_page
 	end
 
@@ -12,7 +15,7 @@ class UsersController < ApplicationController
 			remember_session(user)
 			login_params[:remember_me] == '1' ? remember_cookies(user) : forget_cookies(user)
   		flash[:success] = "successful login"
-			redirect_to root_path
+			redirect_to user
 		else
   		flash.now[:danger] = "something is wrong"
   		render 'users/login_page'
@@ -40,6 +43,10 @@ class UsersController < ApplicationController
   end
 
   private
+  # def show_params
+  # 	params.permit(:id)
+  # end
+
   def login_params
   	params.require(:login_info).permit(:email, :password, :remember_me)
   end

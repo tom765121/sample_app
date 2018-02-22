@@ -34,6 +34,10 @@ module UsersHelper
 		return !!current_user
 	end
 
+	def current_user_page?
+		# @
+	end
+
 	def current_user_logout
 		forget_cookies(current_user)
 		session.delete(:user_id)
