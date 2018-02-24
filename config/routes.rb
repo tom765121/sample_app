@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 	# resource :users
 
 	get '/home', to: 'users#home'
@@ -12,6 +13,14 @@ Rails.application.routes.draw do
   # get 'users/login'
 
   # get 'users/signup'
+  
+  #alarms
+  get '/alarms/new', to: 'alarms#new'
+  post '/alarms/new', to: 'alarms#create'
+  get '/alarms/show', to: 'alarms#show'
+  get '/alarms/all', to: 'alarms#show_all'
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root "application#hello"

@@ -1,0 +1,10 @@
+<% if logged_in? %>
+	<%# controller.redirect_to current_user if params[:id] != current_user.id.to_s %>
+ 	<h1>Users#show</h1>
+	<p>This is profile</p>
+	<% show_alarms(current_user).each_with_index do |alarm, index| %>
+		<div> <%= "#{index + 1}. message : #{alarm.message}" %> </div>
+	<% end %>
+<% else %>
+	<h1> NO ONE LOGIN </h1>
+<% end %>

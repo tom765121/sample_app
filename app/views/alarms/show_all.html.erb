@@ -1,0 +1,28 @@
+<% if logged_in? %>
+	<%# controller.redirect_to current_user if params[:id] != current_user.id.to_s %>
+ 	<h1>Users#show All</h1>
+	<p>This is profile</p>
+	<div>
+		total msg: <%= get_total_msg_num %>
+	</div>
+	<div class="row">
+	  <div class="col-md-6 col-md-offset-3">
+			<%= form_for :all_alarms, url: alarms_all_path, method: 'get' do |f| %>
+			<%= f.label :name, "Num of Msg per page" %>
+			<%= f.text_field :msg_per_page %>
+			<%= f.label :name, "Page Num" %>
+			<%= f.text_field :page_num %>
+			<%= f.submit "Show List", class: "btn btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+
+	<% if @msg_per_page %>
+		<div>Total Page: <%= get_total_pages @msg_per_page %>, Page: <%= @page_num %>, Msg Num: <%= @msg_per_page %> 
+		<% show_all_alarms( @msg_per_page, @page_num - 1).each_with_index do |alarm, index| %>
+			<div> <%= "#{index + 1}. Message: #{alarm.message}" %> </div>
+		<% end %>
+	<% end %>
+<% else %>
+	<h1> NO ONE LOGIN </h1>
+<% end %>
