@@ -4,6 +4,7 @@ class AlarmsController < ApplicationController
 
 	def create
 		alarm_msg = Alarm.create message: create_alarm_params[:message], user_id: current_user.id
+		UserMailer.welcome_email(current_user).deliver
 		if alarm_msg && alarm_msg.send_alarms_to_all_users
 			flash.now[:success] = "Done!!! send to all users"
 		else
