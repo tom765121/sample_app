@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -59,10 +59,24 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
    :address              => "smtp.gmail.com",
    :port                 => 587,
-   :user_name            => ENV['gmail_username'] || "tom765121@gmail.com",
-   :password             => ENV['gmail_password'] || "@GOgo770914",
+   :user_name            => ENV['gmail_username'],
+   :password             => ENV['gmail_password'],
    :authentication       => "plain",
   :enable_starttls_auto => true
   }
+  # SMSEasy::Client.config['from_address'] = "noreply@example.com";
+  # SMSEasy::Client.configure(YAML.load(File.read('config/sms-easy.yml')));
+  # easy = SMSEasy::Client.new
+  # easy.deliver("9095196798", "t-mobile", "Hey!")
+
+  # # SMTP setting for mailgun
+  # ActionMailer::Base.smtp_settings = {
+  #   :port           => 587,
+  #   :address        => "smtp.mailgun.org",
+  #   :domain         => ENV['mg_domain'],
+  #   :user_name      => ENV['mg_username'],
+  #   :password       => ENV['mg_password'],
+  #   :authentication => :plain,
+  # }
 
 end
