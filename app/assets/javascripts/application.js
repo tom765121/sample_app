@@ -11,6 +11,7 @@
 // about supported directives.
 
 //
+//= require markerclusterer
 //= require jquery
 //= require bootstrap
 //= require rails-ujs
